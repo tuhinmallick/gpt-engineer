@@ -225,7 +225,9 @@ def archive(dbs: DBs) -> None:
     )
 
     exclude_dir = ".gpteng"
-    items_to_copy = [f for f in dbs.workspace.path.iterdir() if not f.name == exclude_dir]
+    items_to_copy = [
+        f for f in dbs.workspace.path.iterdir() if f.name != exclude_dir
+    ]
 
     for item_path in items_to_copy:
         destination_path = dbs.archive.path / timestamp / item_path.name
